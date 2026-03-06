@@ -9,32 +9,33 @@ cursor.execute("DROP TABLE IF EXISTS players")
 cursor.execute("DROP TABLE IF EXISTS bids")
 
 
-# USERS TABLE (IPL TEAMS)
+# USERS TABLE (IPL TEAMS WITH WALLET)
 cursor.execute("""
 CREATE TABLE users(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 username TEXT,
-password TEXT
+password TEXT,
+wallet INTEGER
 )
 """)
 
 teams = [
 
-("Mumbai Indians","mi123"),
-("Chennai Super Kings","csk123"),
-("Royal Challengers Bangalore","rcb123"),
-("Kolkata Knight Riders","kkr123"),
-("Delhi Capitals","dc123"),
-("Rajasthan Royals","rr123"),
-("Punjab Kings","pbks123"),
-("Sunrisers Hyderabad","srh123"),
-("Lucknow Super Giants","lsg123"),
-("Gujarat Titans","gt123")
+("Mumbai Indians","mi123",100000000),
+("Chennai Super Kings","csk123",100000000),
+("Royal Challengers Bangalore","rcb123",100000000),
+("Kolkata Knight Riders","kkr123",100000000),
+("Delhi Capitals","dc123",100000000),
+("Rajasthan Royals","rr123",100000000),
+("Punjab Kings","pbks123",100000000),
+("Sunrisers Hyderabad","srh123",100000000),
+("Lucknow Super Giants","lsg123",100000000),
+("Gujarat Titans","gt123",100000000)
 
 ]
 
 cursor.executemany(
-"INSERT INTO users(username,password) VALUES(?,?)",
+"INSERT INTO users(username,password,wallet) VALUES(?,?,?)",
 teams
 )
 
