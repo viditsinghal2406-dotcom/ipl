@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, session, jsonify
 import sqlite3
+import os
 
+if not os.path.exists("players.db"):
+    import init_db
 app = Flask(__name__)
 app.secret_key = "iplauctionsecret"
 
@@ -154,3 +157,4 @@ def bids(player_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
